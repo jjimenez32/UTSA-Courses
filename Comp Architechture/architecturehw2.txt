@@ -1,0 +1,30 @@
+We are examining improving an existing architecture by adding an
+external cache and a faster disk.  For the target application, it
+is predicted the cache will cause loads to complete twice as
+fast, while the new disk causes the average I/O request to experience
+a speedup of 1.2.  The present system spends 20% of its time doing
+loads, and 30% of its time doing I/O.
+
+(a) What is the speedup will we expect from adding both enhancements
+    at the same time?
+
+    St = (1/(1 -Fe0+Fe0/Se0 -Fe1+Fe1/Se1))
+       0 = loads
+          Fe0 = .2, Se0=2
+       1 = I/O:
+          Fe1 = .3, Se1=1.2
+    St = 1/(1 - .2+.2/2 - .3+.3/1.2) = 1/(.5 + .1 + 3/12) 
+       = 1/(.6 + 1/4) = 1 / (.85) = 100/85 ~= 1.1765
+
+(b) If we want to make the application get the same speedup while improving
+    only the disk, how much speedup will the disk need to provide?
+
+    Solve :
+       St = 1 / (1 - Fe + Fe/Se), for Se, getting:
+       Se = -Fe/(1-Fe-1/St), with St = 100/85, Fe = .3
+       Se = -.3 / (1-.3-.85) = -.3 / (.7 - .85) -0.3 / -.15 = .3/.15
+          = 3/1.5 = 2
+       We would need to double the speed of the disk.
+
+    Check answer wt Amdahl's law, Fe=.3, Se=2
+       St = 1/(1-.3 + .3/2) = 1/(.7 - 3/20) = 1/(.7 + 15/100) = 1/.85 = 100/85
