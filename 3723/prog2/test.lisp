@@ -1,0 +1,5 @@
+(defun hello (L)
+ 	(print(CDR L))
+)
+(setf A '(C 3 2))
+(hello A)

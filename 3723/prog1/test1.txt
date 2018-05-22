@@ -1,0 +1,972 @@
+Metadata
+Node Type  Beg Attr Sub Total Sz
+Customer      0           56
+		Attribute Name Type Offset Size
+		customerId       S       0   12
+		name             S      12   20
+		pFirstItem       P      32    8
+		pNextCust        P      40    8
+		balance          D      48    8
+LineItem      5           32
+		Attribute Name Type Offset Size
+		productId        S       0   10
+		iQtyReq          I      12    4
+		dCost            D      16    8
+		pNextItem        P      24    8
+>>> ALLOC C111 Customer 111,Sal A Mander,NULL,NULL,100.00
+>>> PRTNODE C111
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         1     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	100.000000
+>>> ALLOC C222 Customer 222,Barb Wire,NULL,NULL,200.00
+>>> PRTNODE C222
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ae     62         0         1     0x1f8a0b4
+             Attr Name     Type Value
+             customerId      S	222       
+             name            S	Barb Wire 
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	200.000000
+>>> ALLOC PPF001 LineItem PPF001,5,9.95,NULL
+>>> PRTNODE PPF001
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ec     38         1         1     0x1f8a0f2
+             Attr Name     Type Value
+             productId       S	PPF001    
+             iQtyReq         I	5         
+             dCost           D	9.950000  
+             pNextItem       P	(nil)     
+*
+* associate customer 111 with a next pointing to 222
+*
+>>> ASSOC C111 pNextCust C222
+* customer 111's ref cnt should still be 1, but its pNextCust should point to 222
+>>> PRTNODE C111 
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         1     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+* customer 222's ref cnt should now be 2
+>>> PRTNODE C222
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ae     62         0         2     0x1f8a0b4
+             Attr Name     Type Value
+             customerId      S	222       
+             name            S	Barb Wire 
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	200.000000
+*
+* associate customer 111 to PPF001
+*
+>>> ASSOC C111 pFirstItem PPF001
+>>> PRTNODE C111
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         1     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	0x1f8a0f2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+* associate customer 222 to 333
+>>> ALLOC C333 Customer 333,Misty Wind,NULL,NULL,70.00
+>>> ASSOC C222 pNextCust C333
+*
+* 111 should point to 222 which points to 333
+* 111 should also point to PPF001
+*
+>>> PRTALL
+PPF001:0x1f8a0f2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ec     38         1         2     0x1f8a0f2
+             Attr Name     Type Value
+             productId       S	PPF001    
+             iQtyReq         I	5         
+             dCost           D	9.950000  
+             pNextItem       P	(nil)     
+C333:0x1f8a118
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a112     62         0         2     0x1f8a118
+             Attr Name     Type Value
+             customerId      S	333       
+             name            S	Misty Wind
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	70.000000 
+C222:0x1f8a0b4
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ae     62         0         2     0x1f8a0b4
+             Attr Name     Type Value
+             customerId      S	222       
+             name            S	Barb Wire 
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a118 
+             balance         D	200.000000
+C111:0x1f8a076
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         1     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	0x1f8a0f2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+
+* add another customer
+>>> ALLOC C444 Customer 444,Emory Board,NULL,NULL,44.44
+>>> ADDREF PC444 C444
+* Customer 444 should have a ref count of 2
+>>> PRTNODE C444
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+>>> DUMP
+	Address  Mem   Size
+	01F8A070 Alloc   62
+			   01F8A072 .  .  .  .  1  1  1  .  .  .  .  .  .  .  .  .  S  a  l     
+			            01 00 00 00 31 31 31 00 00 00 00 00 00 00 00 00 53 61 6C 20 
+			   01F8A086 A     M  a  n  d  e  r  .  .  .  .  .  .  .  .  .  .  .  .  
+			            41 20 4D 61 6E 64 65 72 00 00 00 00 00 00 00 00 F2 A0 F8 01 
+			   01F8A09A .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Y  @  
+			            00 00 00 00 B4 A0 F8 01 00 00 00 00 00 00 00 00 00 00 59 40 
+	01F8A0AE Alloc   62
+			   01F8A0B0 .  .  .  .  2  2  2  .  .  .  .  .  .  .  .  .  B  a  r  b  
+			            02 00 00 00 32 32 32 00 00 00 00 00 00 00 00 00 42 61 72 62 
+			   01F8A0C4    W  i  r  e  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            20 57 69 72 65 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A0D8 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  i  @  
+			            00 00 00 00 18 A1 F8 01 00 00 00 00 00 00 00 00 00 00 69 40 
+	01F8A0EC Alloc   38
+			   01F8A0EE .  .  .  .  P  P  F  0  0  1  .  .  .  .  .  .  .  .  .  .  
+			            02 00 01 00 50 50 46 30 30 31 00 00 00 00 00 00 05 00 00 00 
+			   01F8A102 f  f  f  f  f  .  #  @  .  .  .  .  .  .  .  .  
+			            66 66 66 66 66 E6 23 40 00 00 00 00 00 00 00 00 
+	01F8A112 Alloc   62
+			   01F8A114 .  .  .  .  3  3  3  .  .  .  .  .  .  .  .  .  M  i  s  t  
+			            02 00 00 00 33 33 33 00 00 00 00 00 00 00 00 00 4D 69 73 74 
+			   01F8A128 y     W  i  n  d  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            79 20 57 69 6E 64 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A13C .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Q  @  
+			            00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 51 40 
+	01F8A150 Alloc   62
+			   01F8A152 .  .  .  .  4  4  4  .  .  .  .  .  .  .  .  .  E  m  o  r  
+			            02 00 00 00 34 34 34 00 00 00 00 00 00 00 00 00 45 6D 6F 72 
+			   01F8A166 y     B  o  a  r  d  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            79 20 42 6F 61 72 64 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A17A .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Q  8  F  @  
+			            00 00 00 00 00 00 00 00 00 00 00 00 B8 1E 85 EB 51 38 46 40 
+*
+* Add a ref to 111 
+*
+>>> ADDREF PC111 C111
+*  111 should have a ref cnt of 2
+>>> PRTALL
+PC111:0x1f8a076
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         2     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	0x1f8a0f2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+C444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+PPF001:0x1f8a0f2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ec     38         1         2     0x1f8a0f2
+             Attr Name     Type Value
+             productId       S	PPF001    
+             iQtyReq         I	5         
+             dCost           D	9.950000  
+             pNextItem       P	(nil)     
+PC444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+C333:0x1f8a118
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a112     62         0         2     0x1f8a118
+             Attr Name     Type Value
+             customerId      S	333       
+             name            S	Misty Wind
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	70.000000 
+C222:0x1f8a0b4
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ae     62         0         2     0x1f8a0b4
+             Attr Name     Type Value
+             customerId      S	222       
+             name            S	Barb Wire 
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a118 
+             balance         D	200.000000
+C111:0x1f8a076
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         2     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	0x1f8a0f2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+
+* Decrement 111's ref cnt, this shouldn't affect anything else
+>>> DEREF PC111 NULL
+>>> PRTALL
+PC111:(nil)
+C444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+PPF001:0x1f8a0f2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ec     38         1         2     0x1f8a0f2
+             Attr Name     Type Value
+             productId       S	PPF001    
+             iQtyReq         I	5         
+             dCost           D	9.950000  
+             pNextItem       P	(nil)     
+PC444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+C333:0x1f8a118
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a112     62         0         2     0x1f8a118
+             Attr Name     Type Value
+             customerId      S	333       
+             name            S	Misty Wind
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	70.000000 
+C222:0x1f8a0b4
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ae     62         0         2     0x1f8a0b4
+             Attr Name     Type Value
+             customerId      S	222       
+             name            S	Barb Wire 
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a118 
+             balance         D	200.000000
+C111:0x1f8a076
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         1     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	0x1f8a0f2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+
+*
+* remove the last ref to 111
+* it should be gone, and there is some affect on the other nodes
+*
+>>> DEREF C111
+		smrcRemoveRef rc=903, Address (0x1f8a06a) is not in the heap 
+>>> PRTALL
+PC111:(nil)
+C444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+PPF001:0x1f8a0f2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ec     38         1         1     0x1f8a0f2
+             Attr Name     Type Value
+             productId       S	PPF001    
+             iQtyReq         I	5         
+             dCost           D	9.950000  
+             pNextItem       P	(nil)     
+PC444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+C333:0x1f8a118
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a112     62         0         2     0x1f8a118
+             Attr Name     Type Value
+             customerId      S	333       
+             name            S	Misty Wind
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	70.000000 
+C222:0x1f8a0b4
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ae     62         0         1     0x1f8a0b4
+             Attr Name     Type Value
+             customerId      S	222       
+             name            S	Barb Wire 
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a118 
+             balance         D	200.000000
+C111:0x1f8a076
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         0     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	0x1f8a0f2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+
+>>> DUMP
+	Address  Mem   Size
+	01F8A070 Alloc   62
+			   01F8A072 .  .  .  .  1  1  1  .  .  .  .  .  .  .  .  .  S  a  l     
+			            00 00 00 00 31 31 31 00 00 00 00 00 00 00 00 00 53 61 6C 20 
+			   01F8A086 A     M  a  n  d  e  r  .  .  .  .  .  .  .  .  .  .  .  .  
+			            41 20 4D 61 6E 64 65 72 00 00 00 00 00 00 00 00 F2 A0 F8 01 
+			   01F8A09A .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Y  @  
+			            00 00 00 00 B4 A0 F8 01 00 00 00 00 00 00 00 00 00 00 59 40 
+	01F8A0AE Alloc   62
+			   01F8A0B0 .  .  .  .  2  2  2  .  .  .  .  .  .  .  .  .  B  a  r  b  
+			            01 00 00 00 32 32 32 00 00 00 00 00 00 00 00 00 42 61 72 62 
+			   01F8A0C4    W  i  r  e  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            20 57 69 72 65 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A0D8 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  i  @  
+			            00 00 00 00 18 A1 F8 01 00 00 00 00 00 00 00 00 00 00 69 40 
+	01F8A0EC Alloc   38
+			   01F8A0EE .  .  .  .  P  P  F  0  0  1  .  .  .  .  .  .  .  .  .  .  
+			            01 00 01 00 50 50 46 30 30 31 00 00 00 00 00 00 05 00 00 00 
+			   01F8A102 f  f  f  f  f  .  #  @  .  .  .  .  .  .  .  .  
+			            66 66 66 66 66 E6 23 40 00 00 00 00 00 00 00 00 
+	01F8A112 Alloc   62
+			   01F8A114 .  .  .  .  3  3  3  .  .  .  .  .  .  .  .  .  M  i  s  t  
+			            02 00 00 00 33 33 33 00 00 00 00 00 00 00 00 00 4D 69 73 74 
+			   01F8A128 y     W  i  n  d  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            79 20 57 69 6E 64 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A13C .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Q  @  
+			            00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 51 40 
+	01F8A150 Alloc   62
+			   01F8A152 .  .  .  .  4  4  4  .  .  .  .  .  .  .  .  .  E  m  o  r  
+			            02 00 00 00 34 34 34 00 00 00 00 00 00 00 00 00 45 6D 6F 72 
+			   01F8A166 y     B  o  a  r  d  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            79 20 42 6F 61 72 64 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A17A .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Q  8  F  @  
+			            00 00 00 00 00 00 00 00 00 00 00 00 B8 1E 85 EB 51 38 46 40 
+*
+* Allocate another node and associate it with 222
+* Allocate another line item and associate 555 to it
+*
+>>> ALLOC C555 Customer 555,Holly Graph,NULL,NULL,55.00
+>>> ASSOC C555 pNextCust C222
+>>> ALLOC SBB001 LineItem SBB001,1,19.95,NULL
+>>> ASSOC C555 pFirstItem SBB001
+>>> PRTALL
+SBB001:0x1f8a1d2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a1cc     38         1         2     0x1f8a1d2
+             Attr Name     Type Value
+             productId       S	SBB001    
+             iQtyReq         I	1         
+             dCost           D	19.950000 
+             pNextItem       P	(nil)     
+PC111:(nil)
+C444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+PPF001:0x1f8a0f2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ec     38         1         1     0x1f8a0f2
+             Attr Name     Type Value
+             productId       S	PPF001    
+             iQtyReq         I	5         
+             dCost           D	9.950000  
+             pNextItem       P	(nil)     
+C555:0x1f8a194
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a18e     62         0         1     0x1f8a194
+             Attr Name     Type Value
+             customerId      S	555       
+             name            S	Holly Graph
+             pFirstItem      P	0x1f8a1d2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	55.000000 
+PC444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+C333:0x1f8a118
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a112     62         0         2     0x1f8a118
+             Attr Name     Type Value
+             customerId      S	333       
+             name            S	Misty Wind
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	70.000000 
+C222:0x1f8a0b4
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ae     62         0         2     0x1f8a0b4
+             Attr Name     Type Value
+             customerId      S	222       
+             name            S	Barb Wire 
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a118 
+             balance         D	200.000000
+C111:0x1f8a076
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         0     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	0x1f8a0f2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+
+*
+* assoc the line items 
+*
+>>> ALLOC BOM001 LineItem BOM001,1,29.95,NULL
+>>> ASSOC SBB001 pNextItem BOM001
+>>> PRTALL
+SBB001:0x1f8a1d2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a1cc     38         1         2     0x1f8a1d2
+             Attr Name     Type Value
+             productId       S	SBB001    
+             iQtyReq         I	1         
+             dCost           D	19.950000 
+             pNextItem       P	0x1f8a1f8 
+PC111:(nil)
+C444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+PPF001:0x1f8a0f2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ec     38         1         1     0x1f8a0f2
+             Attr Name     Type Value
+             productId       S	PPF001    
+             iQtyReq         I	5         
+             dCost           D	9.950000  
+             pNextItem       P	(nil)     
+BOM001:0x1f8a1f8
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a1f2     38         1         2     0x1f8a1f8
+             Attr Name     Type Value
+             productId       S	BOM001    
+             iQtyReq         I	1         
+             dCost           D	29.950000 
+             pNextItem       P	(nil)     
+C555:0x1f8a194
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a18e     62         0         1     0x1f8a194
+             Attr Name     Type Value
+             customerId      S	555       
+             name            S	Holly Graph
+             pFirstItem      P	0x1f8a1d2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	55.000000 
+PC444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+C333:0x1f8a118
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a112     62         0         2     0x1f8a118
+             Attr Name     Type Value
+             customerId      S	333       
+             name            S	Misty Wind
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	70.000000 
+C222:0x1f8a0b4
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ae     62         0         2     0x1f8a0b4
+             Attr Name     Type Value
+             customerId      S	222       
+             name            S	Barb Wire 
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a118 
+             balance         D	200.000000
+C111:0x1f8a076
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         0     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	0x1f8a0f2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+
+*
+* decrement the count for SBB001, C222
+*
+>>> DEREF SBB001
+>>> DEREF C222
+>>> PRTALL
+SBB001:0x1f8a1d2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a1cc     38         1         1     0x1f8a1d2
+             Attr Name     Type Value
+             productId       S	SBB001    
+             iQtyReq         I	1         
+             dCost           D	19.950000 
+             pNextItem       P	0x1f8a1f8 
+PC111:(nil)
+C444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+PPF001:0x1f8a0f2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ec     38         1         1     0x1f8a0f2
+             Attr Name     Type Value
+             productId       S	PPF001    
+             iQtyReq         I	5         
+             dCost           D	9.950000  
+             pNextItem       P	(nil)     
+BOM001:0x1f8a1f8
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a1f2     38         1         2     0x1f8a1f8
+             Attr Name     Type Value
+             productId       S	BOM001    
+             iQtyReq         I	1         
+             dCost           D	29.950000 
+             pNextItem       P	(nil)     
+C555:0x1f8a194
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a18e     62         0         1     0x1f8a194
+             Attr Name     Type Value
+             customerId      S	555       
+             name            S	Holly Graph
+             pFirstItem      P	0x1f8a1d2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	55.000000 
+PC444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	44.440000 
+C333:0x1f8a118
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a112     62         0         2     0x1f8a118
+             Attr Name     Type Value
+             customerId      S	333       
+             name            S	Misty Wind
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	70.000000 
+C222:0x1f8a0b4
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ae     62         0         1     0x1f8a0b4
+             Attr Name     Type Value
+             customerId      S	222       
+             name            S	Barb Wire 
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a118 
+             balance         D	200.000000
+C111:0x1f8a076
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         0     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	0x1f8a0f2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+
+*
+* DEREF C555 and it propagates decrements and frees:
+*    
+*
+>>> DEREF C555
+		smrcRemoveRef rc=902, Not a valid allocated node
+>>> DUMP
+	Address  Mem   Size
+	01F8A070 Alloc   62
+			   01F8A072 .  .  .  .  1  1  1  .  .  .  .  .  .  .  .  .  S  a  l     
+			            00 00 00 00 31 31 31 00 00 00 00 00 00 00 00 00 53 61 6C 20 
+			   01F8A086 A     M  a  n  d  e  r  .  .  .  .  .  .  .  .  .  .  .  .  
+			            41 20 4D 61 6E 64 65 72 00 00 00 00 00 00 00 00 F2 A0 F8 01 
+			   01F8A09A .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Y  @  
+			            00 00 00 00 B4 A0 F8 01 00 00 00 00 00 00 00 00 00 00 59 40 
+	01F8A0AE Alloc   62
+			   01F8A0B0 .  .  .  .  2  2  2  .  .  .  .  .  .  .  .  .  B  a  r  b  
+			            00 00 00 00 32 32 32 00 00 00 00 00 00 00 00 00 42 61 72 62 
+			   01F8A0C4    W  i  r  e  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            20 57 69 72 65 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A0D8 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  i  @  
+			            00 00 00 00 18 A1 F8 01 00 00 00 00 00 00 00 00 00 00 69 40 
+	01F8A0EC Alloc   38
+			   01F8A0EE .  .  .  .  P  P  F  0  0  1  .  .  .  .  .  .  .  .  .  .  
+			            01 00 01 00 50 50 46 30 30 31 00 00 00 00 00 00 05 00 00 00 
+			   01F8A102 f  f  f  f  f  .  #  @  .  .  .  .  .  .  .  .  
+			            66 66 66 66 66 E6 23 40 00 00 00 00 00 00 00 00 
+	01F8A112 Alloc   62
+			   01F8A114 .  .  .  .  3  3  3  .  .  .  .  .  .  .  .  .  M  i  s  t  
+			            01 00 00 00 33 33 33 00 00 00 00 00 00 00 00 00 4D 69 73 74 
+			   01F8A128 y     W  i  n  d  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            79 20 57 69 6E 64 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A13C .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Q  @  
+			            00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 51 40 
+	01F8A150 Alloc   62
+			   01F8A152 .  .  .  .  4  4  4  .  .  .  .  .  .  .  .  .  E  m  o  r  
+			            02 00 00 00 34 34 34 00 00 00 00 00 00 00 00 00 45 6D 6F 72 
+			   01F8A166 y     B  o  a  r  d  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            79 20 42 6F 61 72 64 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A17A .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Q  8  F  @  
+			            00 00 00 00 00 00 00 00 00 00 00 00 B8 1E 85 EB 51 38 46 40 
+	01F8A18E Alloc   62
+			   01F8A190 .  .  .  .  5  5  5  .  .  .  .  .  .  .  .  .  H  o  l  l  
+			            00 00 00 00 35 35 35 00 00 00 00 00 00 00 00 00 48 6F 6C 6C 
+			   01F8A1A4 y     G  r  a  p  h  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            79 20 47 72 61 70 68 00 00 00 00 00 00 00 00 00 D2 A1 F8 01 
+			   01F8A1B8 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  K  @  
+			            00 00 00 00 B4 A0 F8 01 00 00 00 00 00 00 00 00 00 80 4B 40 
+	01F8A1CC Alloc   38
+			   01F8A1CE .  .  .  .  S  B  B  0  0  1  .  .  .  .  .  .  .  .  .  .  
+			            00 00 01 00 53 42 42 30 30 31 00 00 00 00 00 00 01 00 00 00 
+			   01F8A1E2 3  3  3  3  3  .  3  @  .  .  .  .  .  .  .  .  
+			            33 33 33 33 33 F3 33 40 F8 A1 F8 01 00 00 00 00 
+	01F8A1F2 Alloc   38
+			   01F8A1F4 .  .  .  .  B  O  M  0  0  1  .  .  .  .  .  .  .  .  .  .  
+			            01 00 01 00 42 4F 4D 30 30 31 00 00 00 00 00 00 01 00 00 00 
+			   01F8A208 3  3  3  3  3  .  =  @  .  .  .  .  .  .  .  .  
+			            33 33 33 33 33 F3 3D 40 00 00 00 00 00 00 00 00 
+>>> ALLOC C666 Customer 666,Bob L Head,NULL,NULL,66.00
+>>> ASSOC C444 pNextCust C666
+>>> PRTALL
+C222:0x1f8a0b4
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ae     62         0         0     0x1f8a0b4
+             Attr Name     Type Value
+             customerId      S	222       
+             name            S	Barb Wire 
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a118 
+             balance         D	200.000000
+C333:0x1f8a118
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a112     62         0         1     0x1f8a118
+             Attr Name     Type Value
+             customerId      S	333       
+             name            S	Misty Wind
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	70.000000 
+PC444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a21e 
+             balance         D	44.440000 
+C111:0x1f8a076
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         0     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	0x1f8a0f2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+C555:0x1f8a194
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a18e     62         0         0     0x1f8a194
+             Attr Name     Type Value
+             customerId      S	555       
+             name            S	Holly Graph
+             pFirstItem      P	0x1f8a1d2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	55.000000 
+BOM001:0x1f8a1f8
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a1f2     38         1         1     0x1f8a1f8
+             Attr Name     Type Value
+             productId       S	BOM001    
+             iQtyReq         I	1         
+             dCost           D	29.950000 
+             pNextItem       P	(nil)     
+PPF001:0x1f8a0f2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ec     38         1         1     0x1f8a0f2
+             Attr Name     Type Value
+             productId       S	PPF001    
+             iQtyReq         I	5         
+             dCost           D	9.950000  
+             pNextItem       P	(nil)     
+C444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a21e 
+             balance         D	44.440000 
+PC111:(nil)
+C666:0x1f8a21e
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a218     62         0         2     0x1f8a21e
+             Attr Name     Type Value
+             customerId      S	666       
+             name            S	Bob L Head
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	66.000000 
+SBB001:0x1f8a1d2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a1cc     38         1         0     0x1f8a1d2
+             Attr Name     Type Value
+             productId       S	SBB001    
+             iQtyReq         I	1         
+             dCost           D	19.950000 
+             pNextItem       P	0x1f8a1f8 
+
+*
+* Assoc C444 with a different customer, 
+* causing the old customer assoc (C666) to be decremented
+*
+>>> ALLOC C777 Customer 777,Flo N Water,NULL,NULL,77.00
+>>> ASSOC C444 pNextCust C777
+>>> PRTALL
+C777:0x1f8a25c
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a256     62         0         2     0x1f8a25c
+             Attr Name     Type Value
+             customerId      S	777       
+             name            S	Flo N Water
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	77.000000 
+C222:0x1f8a0b4
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ae     62         0         0     0x1f8a0b4
+             Attr Name     Type Value
+             customerId      S	222       
+             name            S	Barb Wire 
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a118 
+             balance         D	200.000000
+C333:0x1f8a118
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a112     62         0         1     0x1f8a118
+             Attr Name     Type Value
+             customerId      S	333       
+             name            S	Misty Wind
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	70.000000 
+PC444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a25c 
+             balance         D	44.440000 
+C111:0x1f8a076
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a070     62         0         0     0x1f8a076
+             Attr Name     Type Value
+             customerId      S	111       
+             name            S	Sal A Mander
+             pFirstItem      P	0x1f8a0f2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	100.000000
+C555:0x1f8a194
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a18e     62         0         0     0x1f8a194
+             Attr Name     Type Value
+             customerId      S	555       
+             name            S	Holly Graph
+             pFirstItem      P	0x1f8a1d2 
+             pNextCust       P	0x1f8a0b4 
+             balance         D	55.000000 
+BOM001:0x1f8a1f8
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a1f2     38         1         1     0x1f8a1f8
+             Attr Name     Type Value
+             productId       S	BOM001    
+             iQtyReq         I	1         
+             dCost           D	29.950000 
+             pNextItem       P	(nil)     
+PPF001:0x1f8a0f2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a0ec     38         1         1     0x1f8a0f2
+             Attr Name     Type Value
+             productId       S	PPF001    
+             iQtyReq         I	5         
+             dCost           D	9.950000  
+             pNextItem       P	(nil)     
+C444:0x1f8a156
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a150     62         0         2     0x1f8a156
+             Attr Name     Type Value
+             customerId      S	444       
+             name            S	Emory Board
+             pFirstItem      P	(nil)     
+             pNextCust       P	0x1f8a25c 
+             balance         D	44.440000 
+PC111:(nil)
+C666:0x1f8a21e
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a218     62         0         1     0x1f8a21e
+             Attr Name     Type Value
+             customerId      S	666       
+             name            S	Bob L Head
+             pFirstItem      P	(nil)     
+             pNextCust       P	(nil)     
+             balance         D	66.000000 
+SBB001:0x1f8a1d2
+     Alloc Adress  Size  Node Type  Ref Cnt Data Adress
+     0x1f8a1cc     38         1         0     0x1f8a1d2
+             Attr Name     Type Value
+             productId       S	SBB001    
+             iQtyReq         I	1         
+             dCost           D	19.950000 
+             pNextItem       P	0x1f8a1f8 
+
+>>> DUMP	Address  Mem   Size
+	01F8A070 Alloc   62
+			   01F8A072 .  .  .  .  1  1  1  .  .  .  .  .  .  .  .  .  S  a  l     
+			            00 00 00 00 31 31 31 00 00 00 00 00 00 00 00 00 53 61 6C 20 
+			   01F8A086 A     M  a  n  d  e  r  .  .  .  .  .  .  .  .  .  .  .  .  
+			            41 20 4D 61 6E 64 65 72 00 00 00 00 00 00 00 00 F2 A0 F8 01 
+			   01F8A09A .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Y  @  
+			            00 00 00 00 B4 A0 F8 01 00 00 00 00 00 00 00 00 00 00 59 40 
+	01F8A0AE Alloc   62
+			   01F8A0B0 .  .  .  .  2  2  2  .  .  .  .  .  .  .  .  .  B  a  r  b  
+			            00 00 00 00 32 32 32 00 00 00 00 00 00 00 00 00 42 61 72 62 
+			   01F8A0C4    W  i  r  e  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            20 57 69 72 65 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A0D8 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  i  @  
+			            00 00 00 00 18 A1 F8 01 00 00 00 00 00 00 00 00 00 00 69 40 
+	01F8A0EC Alloc   38
+			   01F8A0EE .  .  .  .  P  P  F  0  0  1  .  .  .  .  .  .  .  .  .  .  
+			            01 00 01 00 50 50 46 30 30 31 00 00 00 00 00 00 05 00 00 00 
+			   01F8A102 f  f  f  f  f  .  #  @  .  .  .  .  .  .  .  .  
+			            66 66 66 66 66 E6 23 40 00 00 00 00 00 00 00 00 
+	01F8A112 Alloc   62
+			   01F8A114 .  .  .  .  3  3  3  .  .  .  .  .  .  .  .  .  M  i  s  t  
+			            01 00 00 00 33 33 33 00 00 00 00 00 00 00 00 00 4D 69 73 74 
+			   01F8A128 y     W  i  n  d  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            79 20 57 69 6E 64 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A13C .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Q  @  
+			            00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 51 40 
+	01F8A150 Alloc   62
+			   01F8A152 .  .  .  .  4  4  4  .  .  .  .  .  .  .  .  .  E  m  o  r  
+			            02 00 00 00 34 34 34 00 00 00 00 00 00 00 00 00 45 6D 6F 72 
+			   01F8A166 y     B  o  a  r  d  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            79 20 42 6F 61 72 64 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A17A .  .  .  .  \  .  .  .  .  .  .  .  .  .  .  .  Q  8  F  @  
+			            00 00 00 00 5C A2 F8 01 00 00 00 00 B8 1E 85 EB 51 38 46 40 
+	01F8A18E Alloc   62
+			   01F8A190 .  .  .  .  5  5  5  .  .  .  .  .  .  .  .  .  H  o  l  l  
+			            00 00 00 00 35 35 35 00 00 00 00 00 00 00 00 00 48 6F 6C 6C 
+			   01F8A1A4 y     G  r  a  p  h  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            79 20 47 72 61 70 68 00 00 00 00 00 00 00 00 00 D2 A1 F8 01 
+			   01F8A1B8 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  K  @  
+			            00 00 00 00 B4 A0 F8 01 00 00 00 00 00 00 00 00 00 80 4B 40 
+	01F8A1CC Alloc   38
+			   01F8A1CE .  .  .  .  S  B  B  0  0  1  .  .  .  .  .  .  .  .  .  .  
+			            00 00 01 00 53 42 42 30 30 31 00 00 00 00 00 00 01 00 00 00 
+			   01F8A1E2 3  3  3  3  3  .  3  @  .  .  .  .  .  .  .  .  
+			            33 33 33 33 33 F3 33 40 F8 A1 F8 01 00 00 00 00 
+	01F8A1F2 Alloc   38
+			   01F8A1F4 .  .  .  .  B  O  M  0  0  1  .  .  .  .  .  .  .  .  .  .  
+			            01 00 01 00 42 4F 4D 30 30 31 00 00 00 00 00 00 01 00 00 00 
+			   01F8A208 3  3  3  3  3  .  =  @  .  .  .  .  .  .  .  .  
+			            33 33 33 33 33 F3 3D 40 00 00 00 00 00 00 00 00 
+	01F8A218 Alloc   62
+			   01F8A21A .  .  .  .  6  6  6  .  .  .  .  .  .  .  .  .  B  o  b     
+			            01 00 00 00 36 36 36 00 00 00 00 00 00 00 00 00 42 6F 62 20 
+			   01F8A22E L     H  e  a  d  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            4C 20 48 65 61 64 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A242 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  P  @  
+			            00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 50 40 
+	01F8A256 Alloc   62
+			   01F8A258 .  .  .  .  7  7  7  .  .  .  .  .  .  .  .  .  F  l  o     
+			            02 00 00 00 37 37 37 00 00 00 00 00 00 00 00 00 46 6C 6F 20 
+			   01F8A26C N     W  a  t  e  r  .  .  .  .  .  .  .  .  .  .  .  .  .  
+			            4E 20 57 61 74 65 72 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			   01F8A280 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  @  S  @  
+			            00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 40 53 40 
+
+

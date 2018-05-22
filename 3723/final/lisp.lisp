@@ -1,0 +1,8 @@
+(defun pro (a l)
+      ( cond ((null l) nil)
+            ( (atom l) (list l))
+      )
+)
+(setf a 'a)
+(setf l '(a b c d))
+(print (pro a l)) 

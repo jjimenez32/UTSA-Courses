@@ -1,0 +1,38 @@
+
+(setf x 3)
+(print x)
+
+;;; +=
+;;;	
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+(defmacro += (x i)
+	`(eval(+ ,x ,i))
+;	`(setf ,x( + ,x ,i))
+)
+
+(print (+= x 5))
+
+
+
+(defmacro ITERATE ( i start end incr &rest bodies)
+	`(do ( (,i (eval ,start) (+ ,i ,incr)) 
+		(,i (eval ,end))  )
+	( (> ,i ,end) T)
+	,@	
+	)
+)
+	
+
+(setf n 5)
+(setf inc 2)
+(iterate i 1 n 1 
+		(print (list 'three i n))
+		(+= n 1)
+)
+
+	

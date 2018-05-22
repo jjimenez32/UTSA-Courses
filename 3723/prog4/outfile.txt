@@ -1,0 +1,198 @@
+
+ ******************************************************************
+  (MICKEY THROWS A BALL TO THE DOG)
+(MICKEY THROWS A BALL TO THE DOG) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (THE DOG RAN HOME)
+(THE DOG RAN HOME) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (MICKEY THROWS AT THE DOG)
+(MICKEY THROWS AT THE DOG) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (MICKEY THROWS A BALL TO THE)
+(MICKEY THROWS A BALL TO THE) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (MICKEY ATE A LARGE BOWL OF RANCID CHEESE)
+(MICKEY ATE A LARGE BOWL OF RANCID CHEESE) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (MICKEY HAS A NEW PET)
+(MICKEY HAS A NEW PET) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (MICKEY PET A MANGY CAT)
+(MICKEY PET A MANGY CAT) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (MICKEY PET HIS PET)
+(MICKEY PET HIS PET) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (LARRY AND HUGH TAUGHT BRILLIANT STUDENTS)
+(LARRY AND HUGH TAUGHT BRILLIANT STUDENTS) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (MICKEY THREW THE BALL TO PLUTO AND GOOFY)
+(MICKEY THREW THE BALL TO PLUTO AND GOOFY) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (LARRY ATE MASHED POTATOES AND GRAVY)
+(LARRY ATE MASHED POTATOES AND GRAVY) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (LARRY PET PLUTO AND A MANGY CAT)
+(LARRY PET PLUTO AND A MANGY CAT) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (LARRY AND HUGH ARE VERY CLEVER)
+(LARRY AND HUGH ARE VERY CLEVER) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (WHILE MICKEY WAS HOME COMMA HE MADE A HALLOWEEN COSTUME)
+(WHILE MICKEY WAS HOME COMMA HE MADE A HALLOWEEN COSTUME) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+    subConjunction= NIL
+    subSubject= NIL
+    subVerb= NIL
+    SubDirectObject= NIL
+    SubPrep= NIL
+    SubIndirectObject= NIL
+ ******************************************************************
+  
+(AFTER MAYNARD SHOT THE ARROW AT HUGH COMMA A DOCTOR REMOVED THE ARROW FROM
+ HUGHS HAND)
+(AFTER MAYNARD SHOT THE ARROW AT HUGH COMMA A DOCTOR REMOVED THE ARROW FROM
+ HUGHS HAND) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+    subConjunction= NIL
+    subSubject= NIL
+    subVerb= NIL
+    SubDirectObject= NIL
+    SubPrep= NIL
+    SubIndirectObject= NIL
+ ******************************************************************
+  (WHILE LARRY AND HUGH TAUGHT BRILLIANT STUDENTS COMMA THEY LOST HAIR)
+(WHILE LARRY AND HUGH TAUGHT BRILLIANT STUDENTS COMMA THEY LOST HAIR) 
+NIL 
+RUN 
+    checkSentence returned RUN
+    subject= NIL
+    verb= RUN
+    directObject= NIL
+    prep= NIL
+    indirectObject= NIL
+    subConjunction= NIL
+    subSubject= NIL
+    subVerb= NIL
+    SubDirectObject= NIL
+    SubPrep= NIL
+    SubIndirectObject= NIL

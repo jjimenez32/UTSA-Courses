@@ -1,0 +1,8 @@
+(defun LAST1 (L)
+	(COND ((NULL L) NIL)
+	(T 	(APPEND (LAST1 (CDR L)) (LIST (CAR L))
+	 )
+)
+)
+)
+(LAST1 '(A B C))

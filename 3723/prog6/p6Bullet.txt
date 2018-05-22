@@ -1,0 +1,14 @@
+@. FORMAT JUST=BULLET LM=5 RM=45 BULLET=o FLOW=YES
+         1         2         3         4         5         6         7
+12345678901234567890123456789012345678901234567890123456789012345678901234567
+Five Golden Rings
+
+Four Colly Birds 
+although sometimes known as calling birds
+
+Three French Hens
+
+Two Turtle Doves
+
+A Partridge in a Pear Tree (why would you want a partridge in a pear tree)
+

@@ -1,0 +1,33 @@
+
+ ******************************************************************
+  (MICKEY THROWS A BALL TO THE DOG)
+    checkSentence returned T
+    subject= (MICKEY)
+    verb= (THROWS)
+    directObject= (A BALL)
+    prep= (TO)
+    indirectObject= (THE DOG)
+ ******************************************************************
+  (THE DOG RAN HOME)
+    checkSentence returned T
+    subject= (THE DOG)
+    verb= (RAN)
+    directObject= (HOME)
+    prep= NIL
+    indirectObject= NIL
+ ******************************************************************
+  (MICKEY THROWS AT THE DOG)
+    checkSentence returned T
+    subject= (MICKEY)
+    verb= (THROWS)
+    directObject= NIL
+    prep= (AT)
+    indirectObject= (THE DOG)
+ ******************************************************************
+  (MICKEY THROWS A BALL TO THE)
+    checkSentence returned NIL
+    subject= (MICKEY)
+    verb= (THROWS)
+    directObject= (A BALL)
+    prep= (TO)
+    indirectObject= NIL
