@@ -1,0 +1,116 @@
+Assign 4 part 4 
+
+Value of first = 0 Solutions =  1
+Total amount of solutions for 1 numbers: 1
+Time: 0.000250
+
+Value of first = 0 Solutions =  0
+Value of first = 1 Solutions =  0
+Total amount of solutions for 2 numbers: 0
+Time: 0.000135
+
+Value of first = 0 Solutions =  0
+Value of first = 2 Solutions =  0
+Value of first = 1 Solutions =  0
+Total amount of solutions for 3 numbers: 0
+Time: 0.000250
+
+Value of first = 0 Solutions =  0
+Value of first = 1 Solutions =  1
+Value of first = 2 Solutions =  1
+Value of first = 3 Solutions =  0
+Total amount of solutions for 4 numbers: 2
+Time: 0.000191
+
+Value of first = 0 Solutions =  2
+Value of first = 1 Solutions =  2
+Value of first = 2 Solutions =  2
+Value of first = 4 Solutions =  2
+Value of first = 3 Solutions =  2
+Total amount of solutions for 5 numbers: 10
+Time: 0.000212
+
+Value of first = 0 Solutions =  0
+Value of first = 1 Solutions =  1
+Value of first = 2 Solutions =  1
+Value of first = 4 Solutions =  1
+Value of first = 3 Solutions =  1
+Value of first = 5 Solutions =  0
+Total amount of solutions for 6 numbers: 4
+Time: 0.000775
+
+Value of first = 0 Solutions =  4
+Value of first = 1 Solutions =  7
+Value of first = 2 Solutions =  6
+Value of first = 3 Solutions =  6
+Value of first = 4 Solutions =  6
+Value of first = 5 Solutions =  7
+Value of first = 6 Solutions =  4
+Total amount of solutions for 7 numbers: 40
+Time: 0.001527
+
+Value of first = 0 Solutions =  4
+Value of first = 1 Solutions =  8
+Value of first = 2 Solutions =  16
+Value of first = 3 Solutions =  18
+Value of first = 5 Solutions =  16
+Value of first = 4 Solutions =  18
+Value of first = 7 Solutions =  4
+Value of first = 6 Solutions =  8
+Total amount of solutions for 8 numbers: 92
+Time: 0.012797
+
+Value of first = 0 Solutions =  28
+Value of first = 1 Solutions =  30
+Value of first = 2 Solutions =  47
+Value of first = 3 Solutions =  44
+Value of first = 5 Solutions =  44
+Value of first = 4 Solutions =  54
+Value of first = 7 Solutions =  30
+Value of first = 6 Solutions =  47
+Value of first = 8 Solutions =  28
+Total amount of solutions for 9 numbers: 352
+Time: 0.114340
+
+Value of first = 0 Solutions =  64
+Value of first = 1 Solutions =  48
+Value of first = 3 Solutions =  93
+Value of first = 4 Solutions =  92
+Value of first = 2 Solutions =  65
+Value of first = 5 Solutions =  92
+Value of first = 6 Solutions =  93
+Value of first = 7 Solutions =  65
+Value of first = 9 Solutions =  64
+Value of first = 8 Solutions =  48
+Total amount of solutions for 10 numbers: 724
+Time: 1.268108
+
+Value of first = 0 Solutions =  96
+Value of first = 1 Solutions =  219
+Value of first = 2 Solutions =  209
+Value of first = 3 Solutions =  295
+Value of first = 4 Solutions =  346
+Value of first = 6 Solutions =  346
+Value of first = 5 Solutions =  350
+Value of first = 8 Solutions =  209
+Value of first = 7 Solutions =  295
+Value of first = 10 Solutions =  96
+Value of first = 9 Solutions =  219
+Total amount of solutions for 11 numbers: 2680
+Time: 16.360462
+
+Value of first = 0 Solutions =  500
+Value of first = 1 Solutions =  806
+Value of first = 2 Solutions =  1165
+Value of first = 3 Solutions =  1359
+Value of first = 4 Solutions =  1631
+Value of first = 5 Solutions =  1639
+Value of first = 6 Solutions =  1639
+Value of first = 7 Solutions =  1631
+Value of first = 8 Solutions =  1359
+Value of first = 9 Solutions =  1165
+Value of first = 10 Solutions =  806
+Value of first = 11 Solutions =  500
+Total amount of solutions for 12 numbers: 14200
+Time: 196.689229
+

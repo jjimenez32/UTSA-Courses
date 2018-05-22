@@ -1,0 +1,9 @@
+1. I worked alone in on this assignment.
+2. I believe I did everything correct, although possibly might have not error checked on something specific that may have been required.
+3.
+
+4. Didn't think the program was too difficult except for the fcfsa function. 
+5.-rw-r--r-- 1 wlr314 students 44446815 Jan 26 22:02 fcfsa.all
+ 2000001  2000003 44446815 fcfsa.all
+459568c67f233f556792499e4b2  fcfsa.all
+

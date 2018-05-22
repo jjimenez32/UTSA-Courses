@@ -1,0 +1,13 @@
+Integer:10
+Integer:12
+Integer:13
+Integer:15
+Integer:234432
+Double:12.10
+Double:13.23
+Double:14.54
+String:hello 2213
+String:world 3432
+String:foo 34543
+String:bar 32133
+String:foobar

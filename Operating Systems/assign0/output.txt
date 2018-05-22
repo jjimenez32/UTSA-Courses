@@ -1,0 +1,10 @@
+Integer:123
+Integer:321
+Integer:123123
+Double:123.12
+Double:321.32
+Double:456654.12
+Double:123321.22
+String:hello world
+String:foo
+String:bar

@@ -1,0 +1,10 @@
+1. I worked by myself on this assignment
+2. I honestly don't think I did everything correctly, unfortunately. 
+3. I just didn't believe the method I made assign3part2 was correct. It might be, just not confident.
+4. Was challenging but korkmaz going over part1 in the last lecture really helped.
+5.
+ceabc02825a5b908e474b053074ab53c  output-part1
+
+d18f2becdb3d4752d1cb4706e37d9da4  output-part2
+
+Page Faults: 3947

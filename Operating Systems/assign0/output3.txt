@@ -1,0 +1,10 @@
+Integer:101
+Integer:102
+Integer:103
+Integer:105
+Integer:106
+Double:107.11
+Double:108.42
+Double:1103.33
+String:hello world
+String:my name is jonathan

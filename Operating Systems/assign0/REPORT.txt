@@ -1,0 +1,4 @@
+1. I worked alone on this assignment.
+2. The output seems to be correct but I don't think it properly freed every allocation.
+3. I tried many ways to free on every allocation but it seemed to give many errors on valgrind.
+4. It took me a while to figure out how to allow user to re-enter string without changing the counter. 

@@ -1,0 +1,569 @@
+Now creating and running 20 job(s)!
+
+Thread 1 entered manage CPU!
+Thread 2 entered manage CPU!
+Thread 3 entered manage CPU!
+Thread 4 entered manage CPU!
+Thread 5 entered manage CPU!
+Thread 6 entered manage CPU!
+Thread 7 entered manage CPU!
+Thread 8 entered manage CPU!
+Thread 10 entered manage I/O!
+Thread 9 entered manage I/O!
+Thread 12 entered manage I/O!
+Thread 13 entered manage Jobs!
+Thread 16 entered manage Jobs!
+Thread 11 entered manage I/O!
+Thread 14 entered manage Jobs!
+Thread 15 entered manage Jobs!
+Job 1 created by thread 13, numPhases: 3, PhaseType: 1, duration: 1, position: 0
+Job created, taking a nap for 3
+Thread 8 grabbed job 1 from position 0, total completed: 0, num ready: 1
+About to run job 1
+Job 2 created by thread 16, numPhases: 4, PhaseType: 1, duration: 1, position: 1
+Job created, taking a nap for 3
+Job 3 created by thread 15, numPhases: 6, PhaseType: 1, duration: 2, position: 2
+Job created, taking a nap for 3
+Thread 6 grabbed job 2 from position 1, total completed: 0, num ready: 2
+About to run job 2
+Thread 5 grabbed job 3 from position 2, total completed: 0, num ready: 1
+About to run job 3
+Job 4 created by thread 14, numPhases: 5, PhaseType: 1, duration: 4, position: 3
+Job created, taking a nap for 3
+Thread 7 grabbed job 4 from position 3, total completed: 0, num ready: 1
+About to run job 4
+Job 1 ran for 1s. Current Phase: 1, Remaining Phases: 2
+
+Job 1 placed in IO queue at position 0
+Thread 11 grabbed job id: 1 from position 3, total completed: 0, num ready: 1
+About to run IO for ID: 1
+Job 2 ran for 1s. Current Phase: 1, Remaining Phases: 3
+
+Job 2 placed in IO queue at position 1
+Thread 10 grabbed job id: 2 from position 3, total completed: 0, num ready: 1
+About to run IO for ID: 2
+Job 1 ran for 1s. Current Phase: 2, Remaining Phases: 1
+
+Job 1 placed in run queue at position 4
+Thread 8 grabbed job 1 from position 4, total completed: 0, num ready: 1
+About to run job 1
+Job 3 ran for 2s. Current Phase: 1, Remaining Phases: 5
+
+Job 3 placed in IO queue at position 2
+Thread 11 grabbed job id: 3 from position 4, total completed: 0, num ready: 1
+About to run IO for ID: 3
+Job 2 ran for 1s. Current Phase: 2, Remaining Phases: 2
+
+Job 2 placed in run queue at position 5
+Thread 5 grabbed job 2 from position 5, total completed: 0, num ready: 1
+About to run job 2
+Job 5 created by thread 13, numPhases: 6, PhaseType: 1, duration: 2, position: 6
+Job created, taking a nap for 3
+Thread 6 grabbed job 5 from position 6, total completed: 0, num ready: 1
+About to run job 5
+Job 6 created by thread 16, numPhases: 4, PhaseType: 1, duration: 3, position: 7
+Job created, taking a nap for 3
+Thread 4 grabbed job 6 from position 7, total completed: 0, num ready: 1
+Job 7 created by thread 15, numPhases: 4, PhaseType: 1, duration: 3, position: 8
+About to run job 6
+Job created, taking a nap for 3
+Thread 2 grabbed job 7 from position 8, total completed: 0, num ready: 1
+About to run job 7
+Job 1 ran for 1s. Current Phase: 3, Remaining Phases: 0
+
+Job 1 added to complete queue
+Job 8 created by thread 14, numPhases: 4, PhaseType: 1, duration: 2, position: 9
+Job created, taking a nap for 3
+Thread 3 grabbed job 8 from position 9, total completed: 0, num ready: 1
+About to run job 8
+Job 2 ran for 1s. Current Phase: 3, Remaining Phases: 1
+
+Job 2 placed in IO queue at position 3
+Thread 12 grabbed job id: 2 from position 9, total completed: 0, num ready: 1
+About to run IO for ID: 2
+Job 3 ran for 2s. Current Phase: 2, Remaining Phases: 4
+
+Job 3 placed in run queue at position 10
+Thread 5 grabbed job 3 from position 10, total completed: 0, num ready: 1
+Job 4 ran for 4s. Current Phase: 1, Remaining Phases: 4
+
+Job 4 placed in IO queue at position 4
+About to run job 3
+Thread 9 grabbed job id: 4 from position 10, total completed: 0, num ready: 1
+About to run IO for ID: 4
+Job 2 ran for 1s. Current Phase: 4, Remaining Phases: 0
+
+Job 2 added to complete queue
+Job 5 ran for 2s. Current Phase: 1, Remaining Phases: 5
+
+Job 5 placed in IO queue at position 5
+Thread 10 grabbed job id: 5 from position 10, total completed: 0, num ready: 1
+About to run IO for ID: 5
+Job 8 ran for 2s. Current Phase: 1, Remaining Phases: 3
+
+Job 8 placed in IO queue at position 6
+Thread 12 grabbed job id: 8 from position 10, total completed: 0, num ready: 1
+About to run IO for ID: 8
+Job 9 created by thread 13, numPhases: 6, PhaseType: 1, duration: 4, position: 11
+Thread 8 grabbed job 9 from position 11, total completed: 1, num ready: 1
+Job created, taking a nap for 3
+About to run job 9
+Job 6 ran for 3s. Current Phase: 1, Remaining Phases: 3
+
+Job 6 placed in IO queue at position 7
+Thread 11 grabbed job id: 6 from position 11, total completed: 2, num ready: 1
+About to run IO for ID: 6
+Job 10 created by thread 15, numPhases: 4, PhaseType: 1, duration: 4, position: 12
+Job 7 ran for 3s. Current Phase: 1, Remaining Phases: 3
+
+Job 7 placed in IO queue at position 8
+Job created, taking a nap for 3
+Thread 3 grabbed job 10 from position 12, total completed: 2, num ready: 1
+Job 11 created by thread 16, numPhases: 5, PhaseType: 1, duration: 1, position: 13
+About to run job 10
+Thread 4 grabbed job 11 from position 13, total completed: 2, num ready: 1
+About to run job 11
+Job created, taking a nap for 3
+Job 3 ran for 2s. Current Phase: 3, Remaining Phases: 3
+
+Job 3 placed in IO queue at position 9
+Job 12 created by thread 14, numPhases: 5, PhaseType: 1, duration: 2, position: 14
+Job created, taking a nap for 3
+Thread 6 grabbed job 12 from position 14, total completed: 2, num ready: 1
+About to run job 12
+Job 5 ran for 2s. Current Phase: 2, Remaining Phases: 4
+
+Job 5 placed in run queue at position 15
+Thread 7 grabbed job 5 from position 15, total completed: 2, num ready: 1
+Thread 10 grabbed job id: 7 from position 15, total completed: 2, num ready: 2
+About to run IO for ID: 7
+About to run job 5
+Job 11 ran for 1s. Current Phase: 1, Remaining Phases: 4
+
+Job 11 placed in IO queue at position 10
+Job 8 ran for 2s. Current Phase: 2, Remaining Phases: 2
+
+Job 8 placed in run queue at position 16
+Thread 4 grabbed job 8 from position 16, total completed: 2, num ready: 1
+Thread 12 grabbed job id: 3 from position 16, total completed: 2, num ready: 2
+About to run IO for ID: 3
+About to run job 8
+Job 4 ran for 4s. Current Phase: 2, Remaining Phases: 3
+
+Job 4 placed in run queue at position 17
+Thread 9 grabbed job id: 11 from position 16, total completed: 2, num ready: 1
+About to run IO for ID: 11
+Thread 1 grabbed job 4 from position 17, total completed: 2, num ready: 1
+About to run job 4
+Job 12 ran for 2s. Current Phase: 1, Remaining Phases: 4
+
+Job 12 placed in IO queue at position 11
+Job 13 created by thread 13, numPhases: 6, PhaseType: 1, duration: 1, position: 18
+Job created, taking a nap for 3
+Thread 6 grabbed job 13 from position 18, total completed: 2, num ready: 1
+About to run job 13
+Job 6 ran for 3s. Current Phase: 2, Remaining Phases: 2
+
+Job 14 created by thread 16, numPhases: 8, PhaseType: 1, duration: 3, position: 19
+Thread 5 grabbed job 14 from position 19, total completed: 2, num ready: 1
+Job created, taking a nap for 3
+Job 15 created by thread 15, numPhases: 3, PhaseType: 1, duration: 1, position: 20
+Job created, taking a nap for 3
+Job 6 placed in run queue at position 21
+Thread 11 grabbed job id: 12 from position 19, total completed: 2, num ready: 1
+About to run IO for ID: 12
+About to run job 14
+Thread 2 grabbed job 15 from position 20, total completed: 2, num ready: 2
+About to run job 15
+Job 5 ran for 2s. Current Phase: 3, Remaining Phases: 3
+
+Job 5 placed in IO queue at position 12
+Thread 7 grabbed job 6 from position 21, total completed: 2, num ready: 1
+About to run job 6
+Job 16 created by thread 14, numPhases: 8, PhaseType: 1, duration: 3, position: 22
+Job created, taking a nap for 3
+Job 11 ran for 1s. Current Phase: 2, Remaining Phases: 3
+
+Job 11 placed in run queue at position 23
+Thread 9 grabbed job id: 5 from position 21, total completed: 2, num ready: 1
+About to run IO for ID: 5
+Job 3 ran for 2s. Current Phase: 4, Remaining Phases: 2
+
+Job 3 placed in run queue at position 24
+Job 8 ran for 2s. Current Phase: 3, Remaining Phases: 1
+
+Job 8 placed in IO queue at position 13
+Thread 12 grabbed job id: 8 from position 21, total completed: 2, num ready: 1
+About to run IO for ID: 8
+Thread 4 grabbed job 16 from position 22, total completed: 2, num ready: 3
+About to run job 16
+Job 9 ran for 4s. Current Phase: 1, Remaining Phases: 5
+
+Job 9 placed in IO queue at position 14
+Thread 8 grabbed job 11 from position 23, total completed: 2, num ready: 2
+About to run job 11
+Job 7 ran for 3s. Current Phase: 2, Remaining Phases: 2
+
+Job 7 placed in run queue at position 25
+Thread 10 grabbed job id: 9 from position 23, total completed: 2, num ready: 1
+About to run IO for ID: 9
+Job 10 ran for 4s. Current Phase: 1, Remaining Phases: 3
+
+Job 10 placed in IO queue at position 15
+Thread 3 grabbed job 3 from position 24, total completed: 2, num ready: 2
+About to run job 3
+Job 13 ran for 1s. Current Phase: 1, Remaining Phases: 5
+
+Job 13 placed in IO queue at position 16
+Thread 6 grabbed job 7 from position 25, total completed: 2, num ready: 1
+About to run job 7
+Job 15 ran for 1s. Current Phase: 1, Remaining Phases: 2
+
+Job 15 placed in IO queue at position 17
+Job 11 ran for 1s. Current Phase: 3, Remaining Phases: 2
+
+Job 11 placed in IO queue at position 18
+Job 12 ran for 2s. Current Phase: 2, Remaining Phases: 3
+
+Job 12 placed in run queue at position 26
+Thread 11 grabbed job id: 10 from position 26, total completed: 2, num ready: 4
+About to run IO for ID: 10
+Thread 2 grabbed job 12 from position 26, total completed: 2, num ready: 1
+About to run job 12
+Job 5 ran for 2s. Current Phase: 4, Remaining Phases: 2
+
+Job 5 placed in run queue at position 27
+Thread 9 grabbed job id: 13 from position 26, total completed: 2, num ready: 3
+About to run IO for ID: 13
+Thread 8 grabbed job 5 from position 27, total completed: 2, num ready: 1
+About to run job 5
+Job 8 ran for 2s. Current Phase: 4, Remaining Phases: 0
+
+Job 8 added to complete queue
+Thread 12 grabbed job id: 15 from position 27, total completed: 2, num ready: 2
+About to run IO for ID: 15
+Job 17 created by thread 13, numPhases: 3, PhaseType: 1, duration: 4, position: 28
+Job created, taking a nap for 3
+Job 18 created by thread 15, numPhases: 3, PhaseType: 1, duration: 3, position: 29
+Job created, taking a nap for 3
+Job 4 ran for 4s. Current Phase: 3, Remaining Phases: 2
+
+Job 19 created by thread 16, numPhases: 7, PhaseType: 1, duration: 2, position: 30
+Job 14 ran for 3s. Current Phase: 1, Remaining Phases: 7
+
+Job created, taking a nap for 3
+Job 4 placed in IO queue at position 19
+Job 6 ran for 3s. Current Phase: 3, Remaining Phases: 1
+
+Job 3 ran for 2s. Current Phase: 5, Remaining Phases: 1
+
+Thread 1 grabbed job 17 from position 28, total completed: 2, num ready: 3
+About to run job 17
+Job 6 placed in IO queue at position 20
+Thread 7 grabbed job 18 from position 29, total completed: 2, num ready: 2
+About to run job 18
+Job 3 placed in IO queue at position 21
+Thread 3 grabbed job 19 from position 30, total completed: 2, num ready: 1
+About to run job 19
+Job 14 placed in IO queue at position 22
+Job 20 created by thread 14, numPhases: 8, PhaseType: 1, duration: 2, position: 31
+Job created, taking a nap for 3
+Thread 5 grabbed job 20 from position 31, total completed: 3, num ready: 1
+About to run job 20
+Job 13 ran for 1s. Current Phase: 2, Remaining Phases: 4
+
+Job 13 placed in run queue at position 32
+Thread 9 grabbed job id: 11 from position 31, total completed: 3, num ready: 5
+About to run IO for ID: 11
+Job 16 ran for 3s. Current Phase: 1, Remaining Phases: 7
+
+Job 16 placed in IO queue at position 23
+Thread 4 grabbed job 13 from position 32, total completed: 3, num ready: 1
+About to run job 13
+Job 15 ran for 1s. Current Phase: 2, Remaining Phases: 1
+
+Job 15 placed in run queue at position 33
+Thread 12 grabbed job id: 4 from position 32, total completed: 3, num ready: 5
+About to run IO for ID: 4
+Job 7 ran for 3s. Current Phase: 3, Remaining Phases: 1
+
+Job 7 placed in IO queue at position 24
+Thread 6 grabbed job 15 from position 33, total completed: 3, num ready: 1
+About to run job 15
+Job 12 ran for 2s. Current Phase: 3, Remaining Phases: 2
+
+Job 12 placed in IO queue at position 25
+Job 5 ran for 2s. Current Phase: 5, Remaining Phases: 1
+
+Job 5 placed in IO queue at position 26
+Job 11 ran for 1s. Current Phase: 4, Remaining Phases: 1
+
+Job 11 placed in run queue at position 34
+Thread 8 grabbed job 11 from position 34, total completed: 3, num ready: 1
+About to run job 11
+Thread 9 grabbed job id: 6 from position 34, total completed: 3, num ready: 7
+About to run IO for ID: 6
+Job 13 ran for 1s. Current Phase: 3, Remaining Phases: 3
+
+Job 13 placed in IO queue at position 27
+Job 9 ran for 4s. Current Phase: 2, Remaining Phases: 4
+
+Job 9 placed in run queue at position 35
+Thread 10 grabbed job id: 3 from position 34, total completed: 3, num ready: 7
+About to run IO for ID: 3
+Thread 2 grabbed job 9 from position 35, total completed: 3, num ready: 1
+About to run job 9
+Job 15 ran for 1s. Current Phase: 3, Remaining Phases: 0
+
+Job 15 added to complete queue
+Job 19 ran for 2s. Current Phase: 1, Remaining Phases: 6
+
+Job 19 placed in IO queue at position 28
+Job 20 ran for 2s. Current Phase: 1, Remaining Phases: 7
+
+Job 20 placed in IO queue at position 29
+Job 11 ran for 1s. Current Phase: 5, Remaining Phases: 0
+
+Job 11 added to complete queue
+Job 18 ran for 3s. Current Phase: 1, Remaining Phases: 2
+
+Job 18 placed in IO queue at position 30
+Job 10 ran for 4s. Current Phase: 2, Remaining Phases: 2
+
+Job 10 placed in run queue at position 36
+Thread 5 grabbed job 10 from position 36, total completed: 4, num ready: 1
+Thread 11 grabbed job id: 14 from position 36, total completed: 4, num ready: 9
+About to run IO for ID: 14
+About to run job 10
+Job 3 ran for 2s. Current Phase: 6, Remaining Phases: 0
+
+Job 17 ran for 4s. Current Phase: 1, Remaining Phases: 2
+
+Job 17 placed in IO queue at position 31
+Job 3 added to complete queue
+Thread 10 grabbed job id: 16 from position 36, total completed: 5, num ready: 9
+About to run IO for ID: 16
+Job 4 ran for 4s. Current Phase: 4, Remaining Phases: 1
+
+Job 4 placed in run queue at position 37
+Thread 12 grabbed job id: 7 from position 36, total completed: 6, num ready: 8
+About to run IO for ID: 7
+Thread 8 grabbed job 4 from position 37, total completed: 6, num ready: 1
+Job 6 ran for 3s. Current Phase: 4, Remaining Phases: 0
+
+About to run job 4
+Job 6 added to complete queue
+Thread 9 grabbed job id: 12 from position 37, total completed: 6, num ready: 7
+About to run IO for ID: 12
+Job 9 ran for 4s. Current Phase: 3, Remaining Phases: 3
+
+Job 9 placed in IO queue at position 32
+Job 14 ran for 3s. Current Phase: 2, Remaining Phases: 6
+
+Job 14 placed in run queue at position 38
+Thread 11 grabbed job id: 5 from position 37, total completed: 7, num ready: 7
+About to run IO for ID: 5
+Thread 3 grabbed job 14 from position 38, total completed: 7, num ready: 1
+About to run job 14
+Job 12 ran for 2s. Current Phase: 4, Remaining Phases: 1
+
+Job 12 placed in run queue at position 39
+Thread 9 grabbed job id: 13 from position 39, total completed: 7, num ready: 6
+About to run IO for ID: 13
+Thread 6 grabbed job 12 from position 39, total completed: 7, num ready: 1
+About to run job 12
+Job 16 ran for 3s. Current Phase: 2, Remaining Phases: 6
+
+Job 16 placed in run queue at position 40
+Thread 2 grabbed job 16 from position 40, total completed: 7, num ready: 1
+About to run job 16
+Thread 10 grabbed job id: 19 from position 40, total completed: 7, num ready: 5
+About to run IO for ID: 19
+Job 10 ran for 4s. Current Phase: 3, Remaining Phases: 1
+
+Job 10 placed in IO queue at position 33
+Job 7 ran for 3s. Current Phase: 4, Remaining Phases: 0
+
+Job 7 added to complete queue
+Thread 12 grabbed job id: 20 from position 40, total completed: 7, num ready: 5
+About to run IO for ID: 20
+Job 13 ran for 1s. Current Phase: 4, Remaining Phases: 2
+
+Job 13 placed in run queue at position 41
+Thread 9 grabbed job id: 18 from position 41, total completed: 8, num ready: 4
+Thread 5 grabbed job 13 from position 41, total completed: 8, num ready: 1
+About to run IO for ID: 18
+About to run job 13
+Job 5 ran for 2s. Current Phase: 6, Remaining Phases: 0
+
+Job 5 added to complete queue
+Thread 11 grabbed job id: 17 from position 41, total completed: 8, num ready: 3
+About to run IO for ID: 17
+Job 4 ran for 4s. Current Phase: 5, Remaining Phases: 0
+
+Job 4 added to complete queue
+Job 12 ran for 2s. Current Phase: 5, Remaining Phases: 0
+
+Job 12 added to complete queue
+Job 13 ran for 1s. Current Phase: 5, Remaining Phases: 1
+
+Job 13 placed in IO queue at position 34
+Job 19 ran for 2s. Current Phase: 2, Remaining Phases: 5
+
+Job 19 placed in run queue at position 42
+Thread 10 grabbed job id: 9 from position 42, total completed: 11, num ready: 3
+Thread 7 grabbed job 19 from position 42, total completed: 11, num ready: 1
+About to run IO for ID: 9
+About to run job 19
+Job 14 ran for 3s. Current Phase: 3, Remaining Phases: 5
+
+Job 14 placed in IO queue at position 35
+Job 20 ran for 2s. Current Phase: 2, Remaining Phases: 6
+
+Job 20 placed in run queue at position 43
+Thread 12 grabbed job id: 10 from position 42, total completed: 11, num ready: 3
+About to run IO for ID: 10
+Thread 5 grabbed job 20 from position 43, total completed: 11, num ready: 1
+About to run job 20
+Job 16 ran for 3s. Current Phase: 3, Remaining Phases: 5
+
+Job 16 placed in IO queue at position 36
+Job 18 ran for 3s. Current Phase: 2, Remaining Phases: 1
+
+Job 18 placed in run queue at position 44
+Thread 2 grabbed job 18 from position 44, total completed: 11, num ready: 1
+About to run job 18
+Thread 9 grabbed job id: 13 from position 44, total completed: 11, num ready: 3
+About to run IO for ID: 13
+Job 19 ran for 2s. Current Phase: 3, Remaining Phases: 4
+
+Job 19 placed in IO queue at position 37
+Job 20 ran for 2s. Current Phase: 3, Remaining Phases: 5
+
+Job 20 placed in IO queue at position 38
+Job 13 ran for 1s. Current Phase: 6, Remaining Phases: 0
+
+Job 13 added to complete queue
+Thread 9 grabbed job id: 14 from position 44, total completed: 11, num ready: 4
+About to run IO for ID: 14
+Job 17 ran for 4s. Current Phase: 2, Remaining Phases: 1
+
+Job 17 placed in run queue at position 45
+Thread 8 grabbed job 17 from position 45, total completed: 12, num ready: 1
+About to run job 17
+Thread 11 grabbed job id: 16 from position 45, total completed: 12, num ready: 3
+About to run IO for ID: 16
+Job 9 ran for 4s. Current Phase: 4, Remaining Phases: 2
+
+Job 9 placed in run queue at position 46
+Thread 10 grabbed job id: 19 from position 46, total completed: 12, num ready: 2
+About to run IO for ID: 19
+Thread 6 grabbed job 9 from position 46, total completed: 12, num ready: 1
+About to run job 9
+Job 10 ran for 4s. Current Phase: 4, Remaining Phases: 0
+
+Job 10 added to complete queue
+Thread 12 grabbed job id: 20 from position 46, total completed: 12, num ready: 1
+About to run IO for ID: 20
+Job 18 ran for 3s. Current Phase: 3, Remaining Phases: 0
+
+Job 18 added to complete queue
+Job 14 ran for 3s. Current Phase: 4, Remaining Phases: 4
+
+Job 14 placed in run queue at position 47
+Thread 7 grabbed job 14 from position 47, total completed: 14, num ready: 1
+About to run job 14
+Job 19 ran for 2s. Current Phase: 4, Remaining Phases: 3
+
+Job 19 placed in run queue at position 48
+Thread 3 grabbed job 19 from position 48, total completed: 14, num ready: 1
+About to run job 19
+Job 16 ran for 3s. Current Phase: 4, Remaining Phases: 4
+
+Job 16 placed in run queue at position 49
+Thread 4 grabbed job 16 from position 49, total completed: 14, num ready: 1
+About to run job 16
+Job 20 ran for 2s. Current Phase: 4, Remaining Phases: 4
+
+Job 20 placed in run queue at position 50
+Thread 1 grabbed job 20 from position 50, total completed: 14, num ready: 1
+About to run job 20
+Job 17 ran for 4s. Current Phase: 3, Remaining Phases: 0
+
+Job 17 added to complete queue
+Job 9 ran for 4s. Current Phase: 5, Remaining Phases: 1
+
+Job 9 placed in IO queue at position 39
+Thread 10 grabbed job id: 9 from position 50, total completed: 15, num ready: 1
+About to run IO for ID: 9
+Job 19 ran for 2s. Current Phase: 5, Remaining Phases: 2
+
+Job 19 placed in IO queue at position 40
+Thread 9 grabbed job id: 19 from position 50, total completed: 15, num ready: 1
+About to run IO for ID: 19
+Job 20 ran for 2s. Current Phase: 5, Remaining Phases: 3
+
+Job 20 placed in IO queue at position 41
+Thread 11 grabbed job id: 20 from position 50, total completed: 15, num ready: 1
+About to run IO for ID: 20
+Job 14 ran for 3s. Current Phase: 5, Remaining Phases: 3
+
+Job 14 placed in IO queue at position 42
+Thread 12 grabbed job id: 14 from position 50, total completed: 15, num ready: 1
+About to run IO for ID: 14
+Job 16 ran for 3s. Current Phase: 5, Remaining Phases: 3
+
+Job 16 placed in IO queue at position 43
+Job 19 ran for 2s. Current Phase: 6, Remaining Phases: 1
+
+Job 19 placed in run queue at position 51
+Thread 5 grabbed job 19 from position 51, total completed: 15, num ready: 1
+About to run job 19
+Thread 9 grabbed job id: 16 from position 51, total completed: 15, num ready: 1
+About to run IO for ID: 16
+Job 20 ran for 2s. Current Phase: 6, Remaining Phases: 2
+
+Job 20 placed in run queue at position 52
+Thread 1 grabbed job 20 from position 52, total completed: 15, num ready: 1
+About to run job 20
+Job 14 ran for 3s. Current Phase: 6, Remaining Phases: 2
+
+Job 14 placed in run queue at position 53
+Thread 3 grabbed job 14 from position 53, total completed: 15, num ready: 1
+About to run job 14
+Job 9 ran for 4s. Current Phase: 6, Remaining Phases: 0
+
+Job 9 added to complete queue
+Job 19 ran for 2s. Current Phase: 7, Remaining Phases: 0
+
+Job 19 added to complete queue
+Job 20 ran for 2s. Current Phase: 7, Remaining Phases: 1
+
+Job 20 placed in IO queue at position 44
+Thread 12 grabbed job id: 20 from position 53, total completed: 17, num ready: 1
+About to run IO for ID: 20
+Job 16 ran for 3s. Current Phase: 6, Remaining Phases: 2
+
+Job 16 placed in run queue at position 54
+Thread 4 grabbed job 16 from position 54, total completed: 17, num ready: 1
+About to run job 16
+Job 20 ran for 2s. Current Phase: 8, Remaining Phases: 0
+
+Job 20 added to complete queue
+Job 14 ran for 3s. Current Phase: 7, Remaining Phases: 1
+
+Job 14 placed in IO queue at position 45
+Thread 10 grabbed job id: 14 from position 54, total completed: 17, num ready: 1
+About to run IO for ID: 14
+Job 16 ran for 3s. Current Phase: 7, Remaining Phases: 1
+
+Job 16 placed in IO queue at position 46
+Thread 9 grabbed job id: 16 from position 54, total completed: 18, num ready: 1
+About to run IO for ID: 16
+Job 14 ran for 3s. Current Phase: 8, Remaining Phases: 0
+
+Job 14 added to complete queue
+Job 16 ran for 3s. Current Phase: 8, Remaining Phases: 0
+
+Job 16 added to complete queue
+Completed a total of 20 jobs, Number of jobs left to free: 0, Number of Jobs freed: 20
