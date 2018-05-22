@@ -1,0 +1,57 @@
+#!/usr/bin/perl 
+
+#setting the switch vars to 1 by default
+$di=$d2=$dif=$sam= 1;
+if (@ARGV == 3){
+	$_ = shift(@ARGV);
+	#switch is given so all are set to 0 to find which switch is give
+	$di=$d2=$dif=$sam= 0;
+	if (/1/){
+		$di =1;}
+	if (/2/){
+		$d2 =1;}
+	if (/d/){
+		$dif =1;}
+	if (/s/){
+		$sam =1;}
+}
+$direct1 = $ARGV[0];
+$direct2 = $ARGV[1];
+#perfoming ls to find files in first directory then putting them in hash
+foreach (`ls $direct1`) {
+	chop;
+	if (-f "$direct1/$_"){
+		$left{$_}++;}
+	}
+#perfoming ls to find files in second directory then putting them in hash
+foreach (`ls $direct2`){
+	chop;
+	if (-f "$direct2/$_"){
+		$right{$_}++;}
+	}
+
+foreach $name (keys %left){
+	if (exists $right{$name}){
+		delete $right{$name};
+		$temp = `/usr/bin/diff -q $direct1/$name $direct2/$name`;
+		if ($temp){
+			$results{$name} = "diff";}
+		else {
+			$results{$name} = "same";}
+	}
+	else {
+		$results{$name} = "left";}
+}
+foreach $name(keys %right){	
+	$results{$name} = "right";}
+foreach $name (sort keys %results){
+	if ($results{$name} eq "right" && $d2){
+		print ">>> $name\n";}
+	if ($results{$name} eq "left" && $d1){
+		print "<<< $name\n";}
+	if ($results{$name} eq "same" && $sam){
+		print "> $name <\n";}
+	if ($results{$name} eq "diff" && $dif){
+		print "< $name >\n";}
+}
+

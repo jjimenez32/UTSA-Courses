@@ -1,0 +1,30 @@
+1c1
+< Name: Hugh B. Maynard
+---
+> Name: Jonathan Jimenez
+3c3
+< UTSA ID:  @01234567
+---
+> UTSA ID:  @01569096
+4a5
+> 	Current Courses:
+7,16c8,15
+<       CS 1063             T. Bylander        UTSA
+<       CS 1713             K. Robbins         UTSA
+<       CS 1711             K. Robbins         UTSA
+<       CS 2123             H. Maynard         UTSA
+<       CS 2121             H. Maynard         UTSA
+<       CS 2233             T. Bylander        UTSA
+<       CS 2231             T. Bylander        UTSA
+<       CS 3333             Bopanna            UTSA
+<       CS 3331             Bopanna            UTSA
+< 
+---
+>       CS 3423             H. Maynard         UTSA
+>       CS 3333             D. Gokhman         UTSA
+>       CS 3421             H. Maynard         UTSA
+>       CS 3443             T. Bylander        UTSA
+>       CS 2233             J. Sherette        UTSA
+> 	Prerequisites:
+> 					     School
+> 					    Alamo Colleges

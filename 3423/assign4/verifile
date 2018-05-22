@@ -1,0 +1,39 @@
+#!/usr/bin/perl -w
+
+$root = shift;
+$sha = shift;
+#opens the sha256file then sends to @lines list
+open (SHA256,  $sha) or die;
+@lines = <SHA256>;
+chop @lines;
+#uses the "mysga256" prog on the rootfile given then sends to @lines2
+@lines2 = `mysha256 $root`;
+chop @lines2;
+#splists the list into 2 and sends each to respected list (r being rootfile nad s being sha)
+foreach $ln (sort @lines2){
+	@rsplit = split (/\+/, $ln);
+	push (@rnames, $rsplit[0]);
+	push (@rpt, $_[1]);}
+foreach $ln2 (sort @lines){
+	@ssplit = split (/\+/, $ln2);
+	push (@snames, $ssplit[0]);
+	push (@spt, $_[1]);}
+
+@spt = ();
+@rpt = ();
+#loop that compares the two lists
+NEXT: for ($i =1; $i < @rnames; $i++){
+	for($k = 1; $k < @snames; $k++){
+		#checks if names on each list are the same
+		next unless ($rnames[$i] eq $snames[$k]);
+		#otherwise the <old> output and <new> changes are printed
+		if ($rnames[$i] ne $snames[$k]){
+			print "<old> $snames[$k] $spt[$k]\n";
+			print "<new> $rnames[$i] $rpt[$i]\n";
+			splice (@snames, $k, 1);
+			splice (@spt,$k , 1);
+			goto NEXT;}
+		}
+}
+
+

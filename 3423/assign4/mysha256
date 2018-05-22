@@ -1,0 +1,35 @@
+#!/usr/bin/perl -w
+
+#checking to see if input has too many arguments
+if ($#ARGV >1){
+	print "Too many arguments\n";
+	exit;}
+
+#opening rootfile (read access)
+open(ROOT, "< $ARGV[0]") or warn "Couldn't open ROOTFILE";
+#checking for sha256file and opening (write access) if there
+if (@ARGV == 2){
+	open (SHA256, "> $ARGV[1]");}
+#looping through paths in rootfile
+while ($rt = <ROOT>){
+	chop $rt;
+	#finding each path and setting to ROOTP
+	open (ROOTP, "find $rt -print |");
+	while ($fl = <ROOTP>){
+		chop $fl;
+		#checking if regular file
+		if (-f $fl){
+			$rfl = $fl;
+			#executing the sha256sum cmd to the file
+			$out = `sha256sum $rfl`;
+			#splitting the shasum output into a list
+			@aout = split (/\s+/, $out);
+			#prints this if sha256file is present
+			if(@ARGV == 2){
+				print SHA256 "$aout[1]	$aout[0]\n";}
+			#otherwise prints to STDOUT
+			if(@ARGV == 1){
+				print "$aout[1]	$aout[0]\n";}
+		}
+	}
+}

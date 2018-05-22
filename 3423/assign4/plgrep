@@ -1,0 +1,63 @@
+#!/usr/bin/perl -w
+
+#following done if -f switch is given
+if ($ARGV[0] eq "-f"){
+	shift(@ARGV);
+	$regex = shift(@ARGV);
+	@list = @ARGV;
+	@fl = {};
+
+	foreach $f(@list){
+		open(REG, "/usr/bin/find $f -print|") or die;
+		@temp = <REG>;
+		push(@fl,@temp);}
+	chop @fl;
+	foreach $fi2 (@fl){
+		if(-f $fi2 && -T $fi2){
+			open(RT, "$fi2") or die;
+			@line = <RT>;
+			@t = grep(/$regex/, @line);
+			if (@t !=0) 
+				{print "$fi2\n"};
+		if (-f $fi2 && !-T $fi2){
+			open (RT2, "strings $fi2 |") or die;
+			@line2 = <RT2>;
+			@t2 = grep(/$regex/, @line2);
+			if (@t2 !=0)
+				{print "$fi2\n";}
+			}
+		}
+
+}
+}
+#follwing done if -f switch is not given
+if($ARGV[0] ne "-f"){
+	$regex = shift (@ARGV);
+	@list = @ARGV;
+	@fl = {};
+
+	foreach $fi(@list){
+		open (REG , "/usr/bin/find $fi -print |") or die;
+		@temp =<REG>;
+		push (@fl,@temp);}
+	chop @fl;
+	foreach $fi2 (@fl){
+		if( -f $fi2 && -T $fi2){
+			open (RT, "$fi2") or die;
+			@line = <RT>;
+			foreach $line(@line){
+				if ($line =~/$regex/)
+					{print "$fi2:$line"};
+			}
+		if (-f $fi2 && !-T $fi2){
+			open(RT2, "strings $fi2|") or die;
+			@line2 = <RT2>;
+			foreach $line2(@line){
+				if ($line2 =~/$regex/)
+					{print "$fi2:$line2";}
+			}
+		}
+	}
+	}
+
+}
