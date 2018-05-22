@@ -1,0 +1,39 @@
+﻿Build started 9/23/2016 9:02:36 PM.
+     1>Project "C:\Users\MAXTE\Desktop\prog1\prog1\prog12.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt cs3723p1.c cs3723p1Driver.c
+         cs3723p1Driver.c
+     1>cs3723p1Driver.c(307): error C2143: syntax error : missing ';' before 'type'
+     1>cs3723p1Driver.c(308): error C2065: 'shNodeType' : undeclared identifier
+     1>cs3723p1Driver.c(310): error C2143: syntax error : missing ';' before 'type'
+     1>cs3723p1Driver.c(312): error C2065: 'shNodeType' : undeclared identifier
+     1>cs3723p1Driver.c(314): error C2065: 'shSize' : undeclared identifier
+     1>cs3723p1Driver.c(314): error C2065: 'shNodeType' : undeclared identifier
+         cs3723p1.c
+     1>cs3723p1.c(72): error C2143: syntax error : missing ';' before 'type'
+     1>cs3723p1.c(72): error C2143: syntax error : missing ')' before 'type'
+     1>cs3723p1.c(72): error C2065: 'iAt' : undeclared identifier
+     1>cs3723p1.c(72): warning C4553: '==' : operator has no effect; did you intend '='?
+     1>cs3723p1.c(72): error C2059: syntax error : ')'
+     1>cs3723p1.c(73): error C2143: syntax error : missing ';' before '{'
+     1>cs3723p1.c(74): error C2065: 'iAt' : undeclared identifier
+     1>cs3723p1.c(126): error C2143: syntax error : missing ';' before 'type'
+     1>cs3723p1.c(126): error C2143: syntax error : missing ')' before 'type'
+     1>cs3723p1.c(126): error C2065: 'iAt' : undeclared identifier
+     1>cs3723p1.c(126): warning C4553: '==' : operator has no effect; did you intend '='?
+     1>cs3723p1.c(126): error C2059: syntax error : ')'
+     1>cs3723p1.c(127): error C2143: syntax error : missing ';' before '{'
+     1>cs3723p1.c(128): error C2065: 'iAt' : undeclared identifier
+     1>cs3723p1.c(208): error C2143: syntax error : missing ';' before 'type'
+     1>cs3723p1.c(208): error C2143: syntax error : missing ')' before 'type'
+     1>cs3723p1.c(208): error C2065: 'iAt' : undeclared identifier
+     1>cs3723p1.c(208): warning C4553: '==' : operator has no effect; did you intend '='?
+     1>cs3723p1.c(208): error C2059: syntax error : ')'
+     1>cs3723p1.c(209): error C2143: syntax error : missing ';' before '{'
+     1>cs3723p1.c(210): error C2065: 'iAt' : undeclared identifier
+         Generating Code...
+     1>Done Building Project "C:\Users\MAXTE\Desktop\prog1\prog1\prog12.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.50

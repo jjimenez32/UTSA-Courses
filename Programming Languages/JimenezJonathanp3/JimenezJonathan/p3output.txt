@@ -1,0 +1,109 @@
+
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo
+  I I I I I I I      8     8   8           8     8     o  8    8
+  I  \ `+' /  I      8         8           8     8        8    8
+   \  `-+-'  /       8         8           8      ooooo   8oooo
+    `-__|__-'        8         8           8           8  8
+        |            8     o   8           8     o     8  8
+  ------+------       ooooo    8oooooo  ooo8ooo   ooooo   8
+
+Welcome to GNU CLISP 2.49 (2010-07-07) <http://clisp.cons.org/>
+
+Copyright (c) Bruno Haible, Michael Stoll 1992, 1993
+Copyright (c) Bruno Haible, Marcus Daniels 1994-1997
+Copyright (c) Bruno Haible, Pierpaolo Bernardi, Sam Steingold 1998
+Copyright (c) Bruno Haible, Sam Steingold 1999-2000
+Copyright (c) Sam Steingold, Bruno Haible 2001-2010
+
+Type :h and hit Enter for context help.
+
+[1]> (load "p3wlr314.lisp" :echo T :print T)
+;; Loading file p3wlr314.lisp ...
+;;; +=
+;;;     Parameters:
+;;;             x       - Variable to be incremeted
+;;;             i       - Amount to be incremented by
+;;;     Purpose:
+;;;             Incremets x by i
+(defmacro += (x i)
+        `(setf ,x( + ,x ,i))
+)
++=
+
+;;; ITERATE
+;;;     parameters:
+;;;             i       - Control Variable which is used to count from begin to end
+;;;             begin   - Beginning count
+;;;             end     - Ending count
+;;;             inc     - Amount to be incremented by
+;;;             bodies  - Body expression of what this function will iterate
+;;;     purpose:
+;;;             Iterates expressions in a fixed amount(which is given from begin to end)
+;;;
+(defmacro ITERATE ( i begin end inc &rest bodies)
+        (let ((endValue (gensym)) (incValue(gensym)) )
+                `( do ( ( ,incValue (eval ,inc) ) ( ,i(eval ,begin) (+ ,i ,incValue) ) ( ,endValue (eval ,end) )
+                      )
+                        ( ( > ,i ,endValue) T )
+                        ,@bodies
+                 )
+        )
+)
+ITERATE
+
+
+(setf x 1)
+1
+
+(+= x 5)
+6
+
+
+(iterate i 1 5 1
+        (print (list `one i))
+)
+(ONE 1)
+(ONE 2)
+(ONE 3)
+(ONE 4)
+(ONE 5)
+T
+
+
+(setf n 5)
+5
+
+(iterate i 1 n 1
+        (print (list `two i n))
+        (+= i 1)
+)
+(TWO 1 5)
+(TWO 3 5)
+(TWO 5 5)
+T
+
+
+(setf n 5)
+5
+
+(iterate i 1 n 1
+                (print (list 'three i n))
+                (+= n 1)
+)
+(THREE 1 5)
+(THREE 2 6)
+(THREE 3 7)
+(THREE 4 8)
+(THREE 5 9)
+T
+
+
+(setf n 5)
+5
+
+(setf inc 2)
+2
+
+
+;; Loaded file p3wlr314.lisp
+T

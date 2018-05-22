@@ -1,0 +1,9 @@
+{'last': 'Nard', 'first': 'Mae'}
+{'city': 'SAN ANTONIO', 'street': '123 COLORADO', 'petName': 'Pearl', 'title': 'Dr', 'first': 'Mae', 'last': 'Nard', 'zip': '78255', 'state': 'TX'}
+{'BULLET': 'o', 'LM': '5', 'RM': '80', 'JUST': 'LEFT', 'FLOW': 'YES'}
+{'BULLET': 'o', 'LM': '5', 'RM': '80', 'JUST': 'RIGHT', 'FLOW': 'NO'}
+{'BULLET': 'o', 'LM': '5', 'RM': '70', 'JUST': 'BULLET', 'FLOW': 'YES'}
+*** Not a recognizable command, found: @. SOME BAD STUFF
+*** Invalue format, found: BAD=LEFT
+*** Bad value for JUST  found: FLOW
+{'BULLET': 'o', 'LM': '10', 'RM': '60', 'JUST': 'RIGHT', 'FLOW': 'YES'}
